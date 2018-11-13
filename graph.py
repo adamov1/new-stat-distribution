@@ -9,14 +9,12 @@ arr = []
 arr_full = []
 for line in f:
     k = line.split(" ")
-    #print(k[1],end='')
     if (int(k[0]) > 1000):
         arr.append(float(k[1]))
     arr_full.append(float(k[1]))
 arr2 = np.array(arr)
 arr_full = np.reshape(np.array(arr_full), (-1, 1))
 print(len(arr_full))
-#plt.plot(arr2)
 arr3 = []
 idxs = []
 idx_full = []
@@ -34,19 +32,15 @@ regr = linear_model.LinearRegression()
 arr4 = np.reshape(arr4, (-1, 1))
 arr2 = np.reshape(arr2, (-1, 1))
 arr3 = np.reshape(arr3, (-1, 1))
-#print(arr4)
-#print(arr2)
-#print("HI")
 regr.fit(arr4, arr2);
 y_pred = regr.predict(full_features);
 print(regr.coef_)
 print(len(y_pred))
 print(arr_full)
 print(y_pred)
-#plt.plot(idx_full, arr_full - y_pred, color = 'black', linewidth = 3)
-plt.plot(idx_full, arr_full, color = 'black', linewidth = 1.5)
-plt.plot(idx_full, y_pred, color = 'blue', linewidth = 1.5)
-#plt.plot(idxs, y_pred, color = 'blue', linewidth = 3)
+#plt.plot(idx_full, arr_full - y_pred, color = 'black', linewidth = 3) #display error
+plt.plot(idx_full, arr_full, color = 'black', linewidth = 1.5) #display simulated values
+plt.plot(idx_full, y_pred, color = 'blue', linewidth = 1.5) #display predicted values
 plt.xticks()
 plt.yticks()
 #plt.savefig('error5Mtrials.png')
